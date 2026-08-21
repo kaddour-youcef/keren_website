@@ -13,7 +13,7 @@ type EditorialImageProps = {
  */
 export function EditorialImage({ src, alt, caption, ratio = "4 / 5", className }: EditorialImageProps) {
   return (
-    <figure className={className}>
+    <figure className={`w-full ${className ?? ""}`}>
       <div
         role="img"
         aria-label={alt}

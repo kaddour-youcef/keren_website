@@ -23,7 +23,7 @@ const lato = Lato({
 });
 
 export const viewport: Viewport = {
-  themeColor: '#F7F3EC',
+  themeColor: '#f5f3ee',
   colorScheme: 'light',
   width: 'device-width',
   initialScale: 1,
@@ -42,7 +42,7 @@ export default function DefaultLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang={DEFAULT_LOCALE}>
+    <html lang={DEFAULT_LOCALE} className="bg-background">
       <body className={`${libreBaskerville.variable} ${lato.variable} font-sans antialiased bg-background`}>
         <HtmlLangSync />
         {children}

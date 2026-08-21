@@ -1,155 +1,64 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
-/* Karen Schenck — Psychopraticienne à Antibes
-   Single light identity: ivoire / beige sable / bleu ardoise / bleu nuit /
-   rouge bourgogne. No dark mode — the brief calls for one sober, timeless
-   visual world, not a toggle. */
 :root {
-  --background: #F7F3EC; /* Ivoire */
-  --foreground: #3F3A37; /* Anthracite */
-  --card: #FFFFFF;
-  --card-foreground: #3F3A37;
-  --popover: #FFFFFF;
-  --popover-foreground: #3F3A37;
-  --primary: #3F536B; /* Bleu nuit — bouton principal, footer */
-  --primary-foreground: #F7F3EC;
-  --secondary: #EADFCF; /* Beige sable — fond secondaire */
-  --secondary-foreground: #3F3A37;
-  --muted: #EFE9DE;
-  --muted-foreground: #7A736C;
-  --accent: #8A2E3B; /* Rouge bourgogne — accent, citations */
-  --accent-foreground: #F7F3EC;
-  --destructive: #8A2E3B;
-  --destructive-foreground: #F7F3EC;
-  --border: #DDD7CF; /* Gris clair — séparateurs */
-  --input: #DDD7CF;
-  --ring: #667B97;
-  --heading: #667B97; /* Bleu ardoise — titres H1 / H2 */
-  --radius: 0.2rem;
+  --background: #f5f3ee;
+  --foreground: #27352f;
+  --card: #fbfaf7;
+  --card-foreground: #27352f;
+  --popover: #fbfaf7;
+  --popover-foreground: #27352f;
+  --primary: #49685d;
+  --primary-foreground: #f8f6f0;
+  --secondary: #e4e8df;
+  --secondary-foreground: #27352f;
+  --muted: #ecebe5;
+  --muted-foreground: #69746d;
+  --accent: #b8755e;
+  --accent-foreground: #fffaf5;
+  --destructive: #a84d47;
+  --destructive-foreground: #fffaf5;
+  --border: #d7ddd4;
+  --input: #d7ddd4;
+  --ring: #789385;
+  --heading: #315248;
+  --sand: #ddd4c1;
+  --radius: 0.75rem;
 }
 
 @theme inline {
-  --font-display: var(--font-libre-baskerville), 'Iowan Old Style', Georgia, serif;
-  --font-sans: var(--font-lato), -apple-system, 'Helvetica Neue', Arial, sans-serif;
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-heading: var(--heading);
-  --radius-sm: calc(var(--radius) - 2px);
-  --radius-md: var(--radius);
-  --radius-lg: calc(var(--radius) + 2px);
-  --radius-xl: calc(var(--radius) + 4px);
+  --font-display: var(--font-libre-baskerville), Georgia, serif;
+  --font-sans: var(--font-lato), Arial, sans-serif;
+  --color-background: var(--background); --color-foreground: var(--foreground);
+  --color-card: var(--card); --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover); --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary); --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary); --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted); --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent); --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive); --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border); --color-input: var(--input); --color-ring: var(--ring);
+  --color-heading: var(--heading); --color-sand: var(--sand);
+  --radius-sm: calc(var(--radius) - 4px); --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius); --radius-xl: calc(var(--radius) + 0.5rem);
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground font-sans;
-  }
-  h1, h2, h3, h4 {
-    text-wrap: balance;
-  }
+  * { @apply border-border outline-ring/50; }
+  body { @apply bg-background text-foreground font-sans; }
+  h1, h2, h3, h4 { text-wrap: balance; }
+  a, button { @apply focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring; }
 }
 
-/* Editorial photo slot: shows the beige ground and, once a real photo is
-   dropped at the referenced path, the image — no broken-icon fallback. */
-.editorial-image {
-  background-color: var(--secondary);
-  background-size: cover;
-  background-position: center;
-  border: 1px solid var(--border);
-}
+.editorial-image { background: var(--secondary); background-size: cover; background-position: center; border-radius: 10rem 10rem 0.75rem 0.75rem; overflow: hidden; }
+.editorial-caption { margin-top: .75rem; font-family: var(--font-display); font-style: italic; font-size: .8125rem; color: var(--muted-foreground); }
+.hairline { height: 1px; background: var(--border); }
+.reveal { animation: rise-in .8s ease-out both; }
+@keyframes rise-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+::selection { background: color-mix(in srgb, var(--accent) 22%, transparent); color: var(--foreground); }
+::-webkit-scrollbar { width: 10px; } ::-webkit-scrollbar-track { background: var(--background); } ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 999px; }
+.blog-prose { position: relative; } .blog-prose > :first-child { margin-top: 0; } .blog-prose a { word-break: break-word; } .blog-prose h2, .blog-prose h3 { scroll-margin-top: 6rem; font-family: var(--font-display); color: var(--heading); } .blog-prose p { text-wrap: pretty; }
 
-.editorial-caption {
-  margin-top: 0.6rem;
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 0.8125rem;
-  color: var(--muted-foreground);
-}
-
-/* Thin rule used between sections instead of decorative dividers */
-.hairline {
-  height: 1px;
-  background: var(--border);
-}
-
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--background);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--border);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--muted-foreground);
-}
-
-/* Blog prose styling */
-.blog-prose {
-  position: relative;
-}
-
-.blog-prose > :first-child {
-  margin-top: 0;
-}
-
-.blog-prose a {
-  word-break: break-word;
-}
-
-.blog-prose h2,
-.blog-prose h3 {
-  scroll-margin-top: 6rem;
-  font-family: var(--font-display);
-  color: var(--heading);
-}
-
-.blog-prose h2 a,
-.blog-prose h3 a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.blog-prose h2 a:hover,
-.blog-prose h3 a:hover {
-  color: var(--accent);
-}
-
-.blog-prose p {
-  text-wrap: pretty;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-::selection {
-  background-color: rgba(138, 46, 59, 0.16);
-  color: var(--foreground);
-}
+@media (min-width: 1024px) { .editorial-image { border-radius: 12rem 12rem .75rem .75rem; } }
