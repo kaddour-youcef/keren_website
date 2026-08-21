@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { ContactPageContent } from '@/components/contact-page-content';
+import { WhyConsultIndexContent } from '@/components/why-consult-index-content';
 import { DefaultLocaleContentProvider } from '@/components/default-locale-content-provider';
 import { DEFAULT_LOCALE, getSiteContent } from '@/lib/i18n';
 import { buildSubpageMetadata } from '@/lib/seo';
@@ -11,16 +11,16 @@ export const dynamic = 'force-static';
 export const metadata: Metadata = {
   ...buildSubpageMetadata(
     DEFAULT_LOCALE,
-    '/contact',
-    content.contactPage.metadata.title,
-    content.contactPage.metadata.description
+    '/pourquoi-consulter',
+    content.whyConsultPage.metadata.title,
+    content.whyConsultPage.metadata.description
   ),
 };
 
-export default function ContactPage() {
+export default function WhyConsultPage() {
   return (
     <DefaultLocaleContentProvider content={content}>
-      <ContactPageContent />
+      <WhyConsultIndexContent />
     </DefaultLocaleContentProvider>
   );
 }

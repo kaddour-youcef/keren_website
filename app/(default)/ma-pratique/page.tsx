@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { ContactPageContent } from '@/components/contact-page-content';
+import { PracticeContent } from '@/components/practice-content';
 import { DefaultLocaleContentProvider } from '@/components/default-locale-content-provider';
 import { DEFAULT_LOCALE, getSiteContent } from '@/lib/i18n';
 import { buildSubpageMetadata } from '@/lib/seo';
@@ -11,16 +11,16 @@ export const dynamic = 'force-static';
 export const metadata: Metadata = {
   ...buildSubpageMetadata(
     DEFAULT_LOCALE,
-    '/contact',
-    content.contactPage.metadata.title,
-    content.contactPage.metadata.description
+    '/ma-pratique',
+    content.practicePage.metadata.title,
+    content.practicePage.metadata.description
   ),
 };
 
-export default function ContactPage() {
+export default function MaPratiquePage() {
   return (
     <DefaultLocaleContentProvider content={content}>
-      <ContactPageContent />
+      <PracticeContent />
     </DefaultLocaleContentProvider>
   );
 }

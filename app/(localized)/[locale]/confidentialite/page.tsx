@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { ContactPageContent } from '@/components/contact-page-content';
 import { LocalizedContentProvider } from '@/components/localized-content-provider';
+import { LegalPageContent } from '@/components/legal-page-content';
 import { getSiteContent, isLocale, NON_DEFAULT_LOCALES, type Locale } from '@/lib/i18n';
 import { buildSubpageMetadata } from '@/lib/seo';
 
@@ -22,23 +22,24 @@ export async function generateMetadata({
 
   return buildSubpageMetadata(
     locale as Locale,
-    '/contact',
-    content.contactPage.metadata.title,
-    content.contactPage.metadata.description
+    '/confidentialite',
+    content.privacyPage.metadata.title,
+    content.privacyPage.metadata.description
   );
 }
 
-export default async function LocaleContactPage({
+export default async function LocaleConfidentialitePage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
+  const content = getSiteContent(locale);
 
   return (
     <LocalizedContentProvider locale={locale as Locale}>
-      <ContactPageContent />
+      <LegalPageContent locale={locale as Locale} content={content} page="privacyPage" />
     </LocalizedContentProvider>
   );
 }
