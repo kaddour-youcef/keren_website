@@ -1,9 +1,8 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowDown, ArrowUpRight } from "lucide-react"
+import { ArrowDown, ArrowUpRight, Check, Play } from "lucide-react"
 import { useLandingContent } from "@/components/providers/landing-content-provider"
-import { EditorialImage } from "@/components/practice/editorial-image"
 import { LineArtSprig } from "@/components/landing/line-art-sprig"
 import { localizePath } from "@/lib/i18n"
 
@@ -12,42 +11,58 @@ export function Hero() {
   const { hero } = content.home
 
   return (
-    <section id="hero" className="relative overflow-hidden bg-background pt-16">
-      <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-[0.9fr_1.1fr] lg:items-end lg:gap-20 lg:px-12 lg:py-32">
-        <div className="relative z-10 max-w-2xl">
-          <div className="mb-8 flex items-center gap-3 text-accent motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-3 motion-safe:duration-700">
-            <LineArtSprig className="h-9 w-7 shrink-0" />
-            <p className="text-[11px] font-semibold uppercase tracking-[0.2em]">{hero.eyebrow}</p>
+    <section id="hero" className="relative isolate min-h-[calc(100svh-4rem)] overflow-hidden bg-primary text-primary-foreground">
+      <div
+        className="absolute inset-0 -z-20 bg-cover bg-center motion-safe:animate-[hero-zoom_18s_ease-in-out_infinite_alternate]"
+        style={{ backgroundImage: `url(${hero.imageSrc})` }}
+        role="img"
+        aria-label={hero.imageAlt}
+      />
+      <div className="absolute inset-0 -z-10 bg-primary/75" aria-hidden="true" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-primary via-primary/70 to-primary/20" aria-hidden="true" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-primary via-transparent to-primary/30" aria-hidden="true" />
+
+      <div className="pointer-events-none absolute right-[7%] top-[18%] hidden w-[30vw] max-w-[27rem] opacity-35 lg:block" aria-hidden="true">
+        <img src="/images/emotions/anxiety.png" alt="" className="w-full rotate-6 mix-blend-screen motion-safe:animate-[line-float_9s_ease-in-out_infinite]" />
+      </div>
+
+      <div className="mx-auto flex min-h-[calc(100svh-4rem)] max-w-7xl flex-col justify-between px-5 pb-8 pt-28 sm:px-8 lg:px-12 lg:pb-10 lg:pt-36">
+        <div className="max-w-4xl">
+          <div className="mb-8 flex items-center gap-3 text-secondary motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-3 motion-safe:duration-700">
+            <LineArtSprig className="h-10 w-8 shrink-0" />
+            <p className="text-[11px] font-semibold uppercase tracking-[0.24em]">{hero.eyebrow}</p>
           </div>
-          <h1 className="max-w-3xl font-display text-5xl leading-[1.04] tracking-[-0.035em] text-heading sm:text-7xl lg:text-[6.2rem] motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-4 motion-safe:duration-700">
+          <h1 className="max-w-4xl font-display text-[clamp(3.7rem,8vw,8.5rem)] leading-[0.92] tracking-[-0.055em] text-primary-foreground motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-5 motion-safe:duration-1000">
             {hero.title}
           </h1>
-          <p className="mt-8 max-w-lg text-lg leading-relaxed text-foreground/80 sm:text-xl motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-4 motion-safe:delay-200 motion-safe:duration-700">
+          <p className="mt-9 max-w-2xl text-lg leading-relaxed text-primary-foreground/85 sm:text-xl lg:text-2xl motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-5 motion-safe:delay-200 motion-safe:duration-1000">
             {hero.subtitle}
           </p>
-          <div className="mt-10 flex flex-wrap items-center gap-5 motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-4 motion-safe:delay-300 motion-safe:duration-700">
-            <Link href={localizePath(hero.primaryCtaHref, locale)} prefetch={false} className="group inline-flex items-center gap-3 rounded-sm bg-primary px-6 py-4 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">
-              {hero.primaryCtaLabel}<ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          <div className="mt-10 flex flex-wrap items-center gap-4 motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-5 motion-safe:delay-300 motion-safe:duration-1000">
+            <Link href={localizePath(hero.primaryCtaHref, locale)} prefetch={false} className="group inline-flex items-center gap-3 rounded-sm bg-secondary px-6 py-4 text-sm font-semibold text-secondary-foreground transition-transform hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">
+              {hero.primaryCtaLabel}
+              <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
-            <Link href={localizePath(hero.secondaryCtaHref, locale)} prefetch={false} className="text-sm font-medium text-heading underline decoration-border underline-offset-8 transition-colors hover:text-accent">
+            <Link href={localizePath(hero.secondaryCtaHref, locale)} prefetch={false} className="inline-flex items-center gap-2 rounded-sm border border-primary-foreground/40 px-6 py-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-foreground/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">
+              <Play className="size-4" />
               {hero.secondaryCtaLabel}
             </Link>
           </div>
         </div>
 
-        <div className="relative lg:pb-3 motion-safe:animate-in motion-safe:fade-in motion-safe:zoom-in-95 motion-safe:duration-1000">
-          <div className="absolute -right-5 -top-7 hidden size-28 rounded-full border border-accent/30 lg:block" aria-hidden="true" />
-          <div className="relative overflow-hidden rounded-sm bg-secondary p-3 sm:p-5">
-            <EditorialImage src={hero.imageSrc} alt={hero.imageAlt} ratio="16 / 11" className="transition-transform duration-1000 hover:scale-[1.02]" />
-            <p className="mt-4 flex items-center justify-between px-1 text-xs uppercase tracking-[0.16em] text-muted-foreground">
-              <span>Antibes · cabinet & visioconférence</span><span aria-hidden="true">01</span>
-            </p>
-          </div>
+        <div className="mt-16 grid max-w-3xl gap-6 border-t border-primary-foreground/25 pt-6 sm:grid-cols-3 motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-4 motion-safe:delay-500 motion-safe:duration-1000">
+          {hero.chips.map((item) => (
+            <div key={item} className="flex items-start gap-2 text-sm leading-relaxed text-primary-foreground/80">
+              <Check className="mt-0.5 size-4 shrink-0 text-secondary" />
+              <span>{item}</span>
+            </div>
+          ))}
         </div>
+
+        <a href="#pourquoi-consulter" className="mt-10 hidden items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-primary-foreground/70 transition-colors hover:text-primary-foreground sm:flex">
+          <ArrowDown className="size-4 motion-safe:animate-bounce" /> Découvrir l&apos;accompagnement
+        </a>
       </div>
-      <a href="#pourquoi-consulter" className="mx-auto hidden max-w-7xl items-center gap-3 px-5 pb-8 text-xs uppercase tracking-[0.18em] text-muted-foreground sm:px-8 lg:flex lg:px-12">
-        <ArrowDown className="size-4" /> Découvrir l&apos;accompagnement
-      </a>
     </section>
   )
 }

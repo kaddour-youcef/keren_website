@@ -205,12 +205,26 @@ html {
   transform-origin: bottom center;
 }
 
+@keyframes hero-zoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.06); }
+}
+
+@keyframes line-float {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(6deg); }
+  50% { transform: translate3d(-10px, 14px, 0) rotate(2deg); }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .blob-drift-a, .blob-drift-b, .blob-drift-c, .sprig-sway {
+  .blob-drift-a, .blob-drift-b, .blob-drift-c, .sprig-sway,
+  .animate-float-slow {
     animation: none;
   }
   .sprig-path {
     animation: none;
     stroke-dashoffset: 0;
+  }
+  [class*="hero-zoom"], [class*="line-float"] {
+    animation: none;
   }
 }
