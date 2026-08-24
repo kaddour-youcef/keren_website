@@ -1,10 +1,9 @@
 "use client"
 
 import Link from "next/link"
-import { ChevronDown } from "lucide-react"
+import { ArrowDown, ArrowUpRight } from "lucide-react"
 import { useLandingContent } from "@/components/providers/landing-content-provider"
 import { EditorialImage } from "@/components/practice/editorial-image"
-import { OrganicBlobs } from "@/components/landing/organic-blobs"
 import { LineArtSprig } from "@/components/landing/line-art-sprig"
 import { localizePath } from "@/lib/i18n"
 
@@ -13,88 +12,42 @@ export function Hero() {
   const { hero } = content.home
 
   return (
-    <section id="hero" className="relative overflow-hidden pt-16">
-      <OrganicBlobs variant="soft" className="opacity-70" />
-
-      <div className="relative mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-16 lg:px-8 lg:py-28">
-        <div>
-          <div
-            className="mb-5 flex items-center gap-2 animate-in fade-in slide-in-from-bottom-4 fill-mode-both duration-700"
-          >
-            <LineArtSprig className="h-8 w-6 shrink-0" />
-            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-accent">
-              {hero.eyebrow}
-            </p>
+    <section id="hero" className="relative overflow-hidden bg-background pt-16">
+      <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-[0.9fr_1.1fr] lg:items-end lg:gap-20 lg:px-12 lg:py-32">
+        <div className="relative z-10 max-w-2xl">
+          <div className="mb-8 flex items-center gap-3 text-accent motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-3 motion-safe:duration-700">
+            <LineArtSprig className="h-9 w-7 shrink-0" />
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em]">{hero.eyebrow}</p>
           </div>
-
-          <h1
-            className="mb-5 font-display text-5xl leading-[1.1] text-heading sm:text-6xl animate-in fade-in slide-in-from-bottom-4 fill-mode-both duration-700"
-            style={{ animationDelay: "120ms" }}
-          >
+          <h1 className="max-w-3xl font-display text-5xl leading-[1.04] tracking-[-0.035em] text-heading sm:text-7xl lg:text-[6.2rem] motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-4 motion-safe:duration-700">
             {hero.title}
           </h1>
-
-          <p
-            className="mb-8 max-w-xl text-lg leading-relaxed text-foreground/90 animate-in fade-in slide-in-from-bottom-4 fill-mode-both duration-700"
-            style={{ animationDelay: "220ms" }}
-          >
+          <p className="mt-8 max-w-lg text-lg leading-relaxed text-foreground/80 sm:text-xl motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-4 motion-safe:delay-200 motion-safe:duration-700">
             {hero.subtitle}
           </p>
-
-          <div
-            className="mb-9 flex flex-wrap gap-x-6 gap-y-2 text-[13px] uppercase tracking-[0.06em] text-muted-foreground animate-in fade-in slide-in-from-bottom-4 fill-mode-both duration-700"
-            style={{ animationDelay: "320ms" }}
-          >
-            {hero.chips.map((chip) => (
-              <span key={chip}>{chip}</span>
-            ))}
-          </div>
-
-          <div
-            className="flex flex-wrap items-center gap-4 animate-in fade-in slide-in-from-bottom-4 fill-mode-both duration-700"
-            style={{ animationDelay: "420ms" }}
-          >
-            <Link
-              href={localizePath(hero.primaryCtaHref, locale)}
-              prefetch={false}
-              className="inline-flex items-center bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-all hover:-translate-y-0.5 hover:opacity-90"
-            >
-              {hero.primaryCtaLabel}
+          <div className="mt-10 flex flex-wrap items-center gap-5 motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-4 motion-safe:delay-300 motion-safe:duration-700">
+            <Link href={localizePath(hero.primaryCtaHref, locale)} prefetch={false} className="group inline-flex items-center gap-3 rounded-sm bg-primary px-6 py-4 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">
+              {hero.primaryCtaLabel}<ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
-            <Link
-              href={localizePath(hero.secondaryCtaHref, locale)}
-              prefetch={false}
-              className="inline-flex items-center border-b border-heading pb-0.5 text-sm font-medium text-heading transition-opacity hover:opacity-70"
-            >
+            <Link href={localizePath(hero.secondaryCtaHref, locale)} prefetch={false} className="text-sm font-medium text-heading underline decoration-border underline-offset-8 transition-colors hover:text-accent">
               {hero.secondaryCtaLabel}
             </Link>
           </div>
         </div>
 
-        <div
-          className="relative animate-in fade-in zoom-in-95 fill-mode-both duration-1000 lg:justify-self-end lg:max-w-md"
-          style={{ animationDelay: "180ms" }}
-        >
-          <div className="pointer-events-none absolute -inset-6 -z-10 hidden sm:block">
-            <OrganicBlobs variant="hero" />
-          </div>
-          <div className="animate-float-slow">
-            <EditorialImage
-              src={hero.imageSrc}
-              alt={hero.imageAlt}
-              ratio="4 / 5"
-              className="shadow-[0_24px_60px_-24px_rgba(63,83,107,0.35)]"
-            />
+        <div className="relative lg:pb-3 motion-safe:animate-in motion-safe:fade-in motion-safe:zoom-in-95 motion-safe:duration-1000">
+          <div className="absolute -right-5 -top-7 hidden size-28 rounded-full border border-accent/30 lg:block" aria-hidden="true" />
+          <div className="relative overflow-hidden rounded-sm bg-secondary p-3 sm:p-5">
+            <EditorialImage src={hero.imageSrc} alt={hero.imageAlt} ratio="16 / 11" className="transition-transform duration-1000 hover:scale-[1.02]" />
+            <p className="mt-4 flex items-center justify-between px-1 text-xs uppercase tracking-[0.16em] text-muted-foreground">
+              <span>Antibes · cabinet & visioconférence</span><span aria-hidden="true">01</span>
+            </p>
           </div>
         </div>
       </div>
-
-      <div className="relative hidden justify-center pb-8 lg:flex">
-        <ChevronDown
-          aria-hidden="true"
-          className="h-5 w-5 animate-bounce text-muted-foreground/60"
-        />
-      </div>
+      <a href="#pourquoi-consulter" className="mx-auto hidden max-w-7xl items-center gap-3 px-5 pb-8 text-xs uppercase tracking-[0.18em] text-muted-foreground sm:px-8 lg:flex lg:px-12">
+        <ArrowDown className="size-4" /> Découvrir l&apos;accompagnement
+      </a>
     </section>
   )
 }

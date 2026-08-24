@@ -11,7 +11,7 @@ export function ApproachTeaser() {
   const { approach } = content.home
 
   return (
-    <section className="border-t border-border bg-secondary/40 py-20 lg:py-28">
+    <section className="border-t border-border bg-secondary/40 py-24 lg:py-32">
       <div className="mx-auto grid max-w-6xl gap-12 px-4 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-16 lg:px-8">
         <Reveal>
           <div className="animate-float-slow">

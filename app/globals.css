@@ -26,7 +26,7 @@
   --input: #DDD7CF;
   --ring: #667B97;
   --heading: #667B97; /* Bleu ardoise — titres H1 / H2 */
-  --radius: 0.2rem;
+  --radius: 0.45rem;
 }
 
 @theme inline {

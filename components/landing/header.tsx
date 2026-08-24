@@ -86,7 +86,7 @@ export function Header() {
   const ctaHref = localizePath(content.header.ctaHref, locale)
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-border/80 bg-background/90 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 lg:px-8">
         <Link
           href={localizePath("/", locale)}

@@ -68,7 +68,7 @@ export function BlogIndexContent({
       <Header />
 
       {/* Hero Section */}
-      <section className="px-4 pb-16 pt-28 lg:px-8 lg:pt-36">
+      <section className="px-4 pb-20 pt-32 lg:px-8 lg:pb-24 lg:pt-40">
         <div className="mx-auto max-w-6xl">
           {/* Breadcrumb */}
           <nav className="mb-8 flex items-center gap-2 text-sm text-muted-foreground" aria-label="Breadcrumb">

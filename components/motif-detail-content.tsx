@@ -24,7 +24,7 @@ export function MotifDetailContent({ slug }: { slug: string }) {
       <Header />
 
       <article className="relative overflow-hidden px-4 pb-20 pt-28 lg:px-8">
-        <OrganicBlobs variant="soft" className="opacity-40" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-border" aria-hidden="true" />
         <div className="relative mx-auto max-w-5xl">
           <nav className="mb-8 flex items-center gap-2 text-sm text-muted-foreground" aria-label="Breadcrumb">
             <Link href={localizePath("/pourquoi-consulter", locale)} prefetch={false} className="transition-colors hover:text-foreground">

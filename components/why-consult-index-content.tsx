@@ -21,7 +21,7 @@ export function WhyConsultIndexContent() {
       <Header />
 
       <section className="relative overflow-hidden px-4 pb-16 pt-28 lg:px-8">
-        <OrganicBlobs variant="soft" className="opacity-50" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-border" aria-hidden="true" />
         <div className="relative mx-auto max-w-3xl">
           <Reveal>
             <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-accent">
@@ -46,7 +46,7 @@ export function WhyConsultIndexContent() {
                 <Link
                   href={localizePath(`/pourquoi-consulter/${motif.slug}`, locale)}
                   prefetch={false}
-                  className="group flex h-full flex-col overflow-hidden border border-border bg-card transition-all hover:-translate-y-1 hover:border-heading/40 hover:shadow-[0_24px_48px_-28px_rgba(63,83,107,0.35)] sm:flex-row"
+                  className="group flex h-full flex-col overflow-hidden rounded-sm border border-border bg-card transition-all duration-500 hover:-translate-y-1 hover:border-heading/40 hover:shadow-[0_24px_48px_-28px_rgba(63,83,107,0.35)] sm:flex-row"
                 >
                   <div
                     className="relative aspect-[4/3] w-full shrink-0 bg-secondary bg-cover bg-center sm:aspect-auto sm:w-2/5"

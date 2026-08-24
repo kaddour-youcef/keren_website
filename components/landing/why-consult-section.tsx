@@ -9,10 +9,10 @@ import { localizePath } from "@/lib/i18n"
 const ICONS = { brain: Brain, flame: Flame, users: Users, compass: Compass } as const
 
 const THUMBNAILS: Record<string, string> = {
-  anxiete: "/images/pourquoi-anxiete.webp",
-  "burn-out": "/images/pourquoi-burn-out.webp",
-  "difficultes-relationnelles": "/images/pourquoi-difficultes-relationnelles.webp",
-  "transitions-de-vie": "/images/pourquoi-transitions-de-vie.webp",
+  anxiete: "/images/emotions/anxiety.png",
+  "burn-out": "/images/emotions/depression.png",
+  "difficultes-relationnelles": "/images/emotions/relationship_problems.png",
+  "transitions-de-vie": "/images/emotions/transition.png",
 }
 
 export function WhyConsultSection() {
@@ -20,7 +20,7 @@ export function WhyConsultSection() {
   const { whyConsult } = content.home
 
   return (
-    <section className="border-t border-border py-20 lg:py-28" id="pourquoi-consulter">
+    <section className="border-t border-border py-24 lg:py-32" id="pourquoi-consulter">
       <div className="mx-auto max-w-6xl px-4 lg:px-8">
         <Reveal className="mb-14 max-w-2xl">
           <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-accent">
